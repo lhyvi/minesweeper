@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://dup76h1e3vs8"]
+
+[ext_resource type="Script" path="res://tile.gd" id="1_2jqkr"]
+[ext_resource type="StyleBox" uid="uid://hbas7jmjcpsb" path="res://tile_normal.tres" id="1_yaowp"]
+[ext_resource type="Texture2D" uid="uid://cs3syd444gn6s" path="res://Assets/bomb.png" id="2_ghy87"]
+[ext_resource type="StyleBox" uid="uid://djud0v1ii6u8f" path="res://tile_hover.tres" id="2_x3w35"]
+[ext_resource type="Texture2D" uid="uid://cxchyunol0sc3" path="res://Assets/flag.png" id="3_c56qv"]
+[ext_resource type="StyleBox" uid="uid://dlnjvul5ngvsq" path="res://tile_pressed.tres" id="3_lt7ko"]
+[ext_resource type="StyleBox" uid="uid://dv0281kn4pfc4" path="res://tile_disabled.tres" id="6_c61s4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ty7s3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_amnxm"]
+font_size = 20
+
+[node name="Tile" type="Control"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2jqkr")
+bomb_texture = ExtResource("2_ghy87")
+flag_texture = ExtResource("3_c56qv")
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 1
+anchors_preset = -1
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/normal = ExtResource("1_yaowp")
+theme_override_styles/hover = ExtResource("2_x3w35")
+theme_override_styles/pressed = ExtResource("3_lt7ko")
+theme_override_styles/disabled = ExtResource("6_c61s4")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ty7s3")
+alignment = 0
+icon_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Button"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_amnxm")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[connection signal="gui_input" from="Button" to="." method="_on_button_gui_input"]
